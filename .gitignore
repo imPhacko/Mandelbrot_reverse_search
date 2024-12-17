@@ -1,0 +1,58 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+env/
+.env
+build/
+develop-eggs/
+dist/
+downloads/
+information_files/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+# Dataset files
+data/
+*.gz
+
+
+
+# IDE specific files
+.vscode/
+.idea/
+*.swp
+*.swo.env
+
+# maybe change later
+gui_app/
+notes/
+src/__pycache__/
+src/data_generation.py
+src/data_loader.py
+src/evaluate.py
+src/model.py
+src/visualize.py
+src/utils.py
+src/train.py
+
+run_gui.py
+test_feature_matching.py
+feature_matching_evaluation_results/
+feature_matching_evaluation_results1/
+data/
+results/
+create_training_data.py
