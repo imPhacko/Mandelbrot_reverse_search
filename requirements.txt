@@ -1,6 +1,7 @@
+numpy
+opencv-python
+matplotlib
+Pillow
+imageio
 torch
 torchvision
-numpy
-matplotlib
-pillow
-scikit-learn
