@@ -168,7 +168,7 @@ class MandelbrotFeatureMatcher:
         # Try to match against each reference image
         for idx, entry in enumerate(self.features_db):
             try:
-                # Check if we have enough features for k=2 matching
+                # Check feature count for k=2 matching
                 if len(entry['descriptors']) < 2:
                     print(f"Warning: Reference image {idx} has too few features")
                     continue
@@ -176,13 +176,13 @@ class MandelbrotFeatureMatcher:
                 # Find 2 nearest neighbors for each descriptor
                 matches = self.matcher.knnMatch(descriptors, entry['descriptors'], k=2)
                 
-                # Apply ratio test to filter good matches
+                # Apply the lowe ratio test to filter good matches
                 good_matches = []
                 for match_pair in matches:
                     if len(match_pair) < 2:
                         continue
                     m, n = match_pair
-                    # If best is significantly better than second best, keep it
+                    # If best is much better than second best keep
                     if m.distance < 0.7 * n.distance:
                         good_matches.append(m)
                         

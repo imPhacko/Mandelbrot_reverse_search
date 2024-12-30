@@ -23,18 +23,14 @@ def create_reference_database(image_dir, matcher, save_path=None):
         save_path: Optional path to save the database
         
     Returns:
-        matcher: The matcher object with populated database
+        matcher: The matcher object with database
     """
     # Convert to Path object for easier file handling
     image_dir = Path(image_dir)
     
     # Process all PNG images in directory
     for img_path in image_dir.glob('*.png'):
-        # Load image in grayscale
-        # Why grayscale?
-        # - Feature detection works better on grayscale images
-        # - Reduces memory usage
-        # - Faster processing
+        # Load image in grayscale (maybe illogical but did not readjust)
         image = cv2.imread(str(img_path), cv2.IMREAD_GRAYSCALE)
         
         # Look for corresponding text file with coordinates
@@ -49,7 +45,7 @@ def create_reference_database(image_dir, matcher, save_path=None):
                 
             # Store coordinates in dictionary format
             coordinates = {
-                'x': center.real,      # Real part of complex number
+                'x': center.real,      # Real part
                 'y': center.imag,      # Imaginary part
                 'zoom': zoom           # Zoom level
             }
@@ -57,10 +53,7 @@ def create_reference_database(image_dir, matcher, save_path=None):
             # Add image and its coordinates to database
             matcher.add_reference_image(image, coordinates)
     
-    # Save database if path provided
-    # Useful for:
-    # - Avoiding recomputing features
-    # - Sharing database between sessions
+    # Save database
     if save_path:
         matcher.save_database(save_path)
         

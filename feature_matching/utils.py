@@ -44,7 +44,7 @@ def visualize_match(query_image, matched_coordinates, full_mandelbrot):
     
     TODO: Implementation details
     - Could show full Mandelbrot set with highlighted region
-    - Could show side-by-side comparison
+    - Could show side by side comparison
     - Could add zoom animation between views
     
     Parameters:

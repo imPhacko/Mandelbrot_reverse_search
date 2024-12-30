@@ -21,14 +21,14 @@ def generate_dataset(num_samples, width, height, max_iter, output_dir):
     print(f"Generating {num_samples} images in {output_dir}")
     
     for i in range(num_samples):
-        # Progress update
+        # Progress update, sometimes takes long so nice to see progress
         if i % 100 == 0:
             print(f"Generated {i}/{num_samples} images")
             
         # Randomly select center and zoom
         # More focused sampling around interesting regions
-        if np.random.random() < 0.7:  # 70% chance of interesting regions
-            # Main cardioid and period-2 bulb regions
+        if np.random.random() < 0.7: # make it 70% chance of interesting regions (aka around the main cardiod)
+            # maybe there is a better way to do this not sure
             center = complex(
                 np.random.uniform(-0.7, 0.3),
                 np.random.uniform(-0.5, 0.5)
@@ -57,7 +57,6 @@ def generate_dataset(num_samples, width, height, max_iter, output_dir):
             f.write(f"Center: {center}\nZoom: {zoom}\n")
 
 def main():
-    # Configuration
     config = {
         'num_samples': 1000,  # Generate 1000 images
         'width': 512,
@@ -71,7 +70,7 @@ def main():
         print(f"{key}: {value}")
         
     generate_dataset(**config)
-    print("\nDataset generation complete!")
+    print("\nDataset generation done")
 
 if __name__ == "__main__":
     main()

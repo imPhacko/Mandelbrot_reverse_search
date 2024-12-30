@@ -12,7 +12,7 @@ class FeatureMatchingEvaluator:
         self.data_dir = Path(data_dir)
         self.results_dir = Path(results_dir)
         
-        # Create results directory if it doesn't exist
+        # Create results directory, also check if it exists
         self.results_dir.mkdir(parents=True, exist_ok=True)
         
         # Initialize feature matcher
@@ -23,7 +23,7 @@ class FeatureMatchingEvaluator:
         print(f"Found {len(self.image_paths)} total images")
         
         # Split into training and test sets
-        random.seed(42)  # For reproducibility
+        random.seed(42)
         random.shuffle(self.image_paths)
         split_idx = int(len(self.image_paths) * train_split)
         self.train_images = self.image_paths[:split_idx]
